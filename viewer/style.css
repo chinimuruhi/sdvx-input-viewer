@@ -1,0 +1,120 @@
+#controller {
+    position: absolute;
+    background-color: black;
+    width: 720px;
+    height: 405px;
+}
+
+#analogs    {
+    position: absolute;
+    width: 720px;
+    top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.analog {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.analog .analog-detail  {
+    position: absolute;
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+
+#analogs .blue{
+    margin-left: -500px;
+}
+
+#analogs .blue .left{
+    background: url(../img/analog_left.png);
+}
+
+#analogs .blue .right{
+    background: url(../img/analog_right.png);
+}
+
+#analogs .blue .center{
+    background: url(../img/analog_center.png);
+}
+
+#analogs .red{
+    margin-left: 500px;
+}
+
+#analogs .red .left{
+    background: url(../img/analog_left.png);
+}
+
+#analogs .red .right{
+    background: url(../img/analog_right.png);
+}
+
+#analogs .red .center{
+    background: url(../img/analog_center.png);
+}
+
+#buttons    {
+    position: absolute;
+    width: 720px;
+    top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+#buttons .a{
+    margin-left: -375px;
+    background: url(../img/button.png);
+}
+
+#buttons .b{
+    margin-left: -125px;
+    background: url(../img/button.png);
+}
+
+#buttons .c{
+    margin-left: 125px;
+    background: url(../img/button.png);
+}
+
+#buttons .d{
+    margin-left: 375px;
+    background: url(../img/button.png);
+}
+
+#fxs    {
+    position: absolute;
+    width: 720px;
+    top: 330px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fx {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+#fxs .left{
+    margin-left: -200px;
+    background: url(../img/fx.png);
+}
+
+#fxs .right{
+    margin-left: 200px;
+    background: url(../img/fx.png);
+}
