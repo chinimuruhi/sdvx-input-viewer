@@ -1,0 +1,56 @@
+{
+    "backGroundTransparent": true,
+    "backGroundColor": "#FFF",
+    "analogData":[
+        {
+            ""
+        },
+        {
+
+        }
+    ],
+    "buttonData": [
+        {
+            "offImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/start.png",
+            "offColor": "#DDD",
+            "onImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/start.png",
+            "onColor": "#FFF"
+        },
+        {
+            "offImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
+            "offColor": "#DDD",
+            "onImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
+            "onColor": "#FFF"
+        },
+        {
+            "offImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
+            "offColor": "#DDD",
+            "onImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
+            "onColor": "#FFF"
+        },
+        {
+            "offImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
+            "offColor": "#DDD",
+            "onImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
+            "onColor": "#FFF"
+        },
+        {
+            "offImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
+            "offColor": "#DDD",
+            "onImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
+            "onColor": "#FFF"
+        },
+        {
+            "offImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
+            "offColor": "#DDD",
+            "onImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
+            "onColor": "#FFF"
+        },
+        {
+            "offImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
+            "offColor": "#DDD",
+            "onImagePath": "https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
+            "onColor": "#FFF"
+        }
+    ]
+}

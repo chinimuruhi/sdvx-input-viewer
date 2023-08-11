@@ -1,8 +1,24 @@
 #controller {
     position: absolute;
-    background-color: black;
     width: 720px;
     height: 405px;
+}
+
+#starts    {
+    position: absolute;
+    width: 720px;
+    top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#starts .start {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: url(../img/start.png);
+    filter: none;
 }
 
 #analogs    {
@@ -33,14 +49,18 @@
 
 #analogs .blue .left{
     background: url(../img/analog_left.png);
+    filter: none;
 }
 
 #analogs .blue .right{
     background: url(../img/analog_right.png);
+    filter: none;
 }
 
 #analogs .blue .center{
     background: url(../img/analog_center.png);
+    filter: none;
+    transform:rotate(0deg);  
 }
 
 #analogs .red{
@@ -49,14 +69,18 @@
 
 #analogs .red .left{
     background: url(../img/analog_left.png);
+    filter: none;
 }
 
 #analogs .red .right{
     background: url(../img/analog_right.png);
+    filter: none;
 }
 
 #analogs .red .center{
     background: url(../img/analog_center.png);
+    filter: none;
+    transform:rotate(0deg);  
 }
 
 #buttons    {
@@ -77,21 +101,25 @@
 #buttons .a{
     margin-left: -375px;
     background: url(../img/button.png);
+    filter: none;
 }
 
 #buttons .b{
     margin-left: -125px;
     background: url(../img/button.png);
+    filter: none;
 }
 
 #buttons .c{
     margin-left: 125px;
     background: url(../img/button.png);
+    filter: none;
 }
 
 #buttons .d{
     margin-left: 375px;
     background: url(../img/button.png);
+    filter: none;
 }
 
 #fxs    {
@@ -112,9 +140,17 @@
 #fxs .left{
     margin-left: -200px;
     background: url(../img/fx.png);
+    filter: none;
 }
 
 #fxs .right{
     margin-left: 200px;
     background: url(../img/fx.png);
+    filter: none;
+}
+
+#error-message  {
+    position: absolute;
+    top: 410px;
+    color: red;
 }
