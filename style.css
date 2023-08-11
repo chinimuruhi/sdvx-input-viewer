@@ -1,0 +1,45 @@
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+}
+
+.main .container {
+    padding: 100px 15px 100px 0px;
+}
+
+.main .container h1{
+    padding: 0.5em;
+    color: #010101;
+    background: #DDDDDD;
+    border-bottom: solid 3px #999999;
+}
+
+.main .container h2{
+    padding: 0.3em;
+    border-bottom: solid 2px black;
+}
+
+.main .container h3{
+    padding: 0.25em 0.2em;
+    background: transparent;
+    border-left: solid 10px gray;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #DDDDDD;
+}
+
+.footer .container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15 0 100px;
+}
+
+.footer  .container .text-muted {
+    margin: 0px 0;
+}

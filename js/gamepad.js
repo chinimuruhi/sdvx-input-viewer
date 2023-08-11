@@ -2,8 +2,9 @@
 
 (function (){
     const configData = {
+        "playerNum": 0,
         "backGroundTransparent": false,
-        "backGroundColor": "#DDDDDD",
+        "backGroundColor": "#000000",
         "analogReleaseTime": 0.05,
         "analogData":[
             {
@@ -176,7 +177,7 @@
         });
     }
 
-    //releaseTimeの適用
+    // releaseTimeの適用
     axisManager.setReleaseTime(configData["analogReleaseTime"]);
 
     // 色の変換(RGB→filter)
@@ -214,15 +215,12 @@
 	setInterval(function(){
         //gamepad情報の取得
 		let gamepads = navigator.getGamepads();
-        //Playerの取得
-        let url = new URL(window.location.href);
-        let playerNum = Number(url.searchParams.get("p"));
 
         // Gamepad オブジェクトが存在する
-        if(gamepads[playerNum]){
+        if(gamepads[configData["playerNum"]]){
             //ボタン表示
             for(let i = 0; i < ButtonSelectors.length; i++){
-                if(gamepads[playerNum].buttons[i].pressed){
+                if(gamepads[configData["playerNum"]].buttons[i].pressed){
                     let cssData = {"background": "url(" + configData["buttonData"][i]["onData"]["imagePath"] + ")"};
                     if(configData["buttonData"][i]["onData"]["colorChange"]){
                         cssData["filter"] = configData["buttonData"][i]["onData"]["color"];
@@ -238,7 +236,7 @@
             }
 
             //アナログデバイス表示
-            axisManager.setCurrentAngle(gamepads[playerNum].axes, Date.now());
+            axisManager.setCurrentAngle(gamepads[configData["playerNum"]].axes, Date.now());
             for(let i = 0; i < AnalogSelectors.length; i++){
                 let centerCssData;
                 let leftCssData;

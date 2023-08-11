@@ -1,2 +1,3 @@
 # SDVX Input Viewer
-SOUND VOLTEX コントローラーの入力を可視化するツールです。
+詳しくは下記をご覧ください。
+https://chinimuruhi.github.io/sdvx-input-viewer/
