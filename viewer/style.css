@@ -1,3 +1,7 @@
+body    {
+    overflow: hidden;
+}
+
 #controller {
     position: absolute;
     width: 720px;

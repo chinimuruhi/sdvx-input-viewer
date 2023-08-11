@@ -2,8 +2,9 @@
 
 (function (){
     const configData = {
-        "backGroundTransparent": true,
-        "backGroundColor": "#FFFFFF",
+        "backGroundTransparent": false,
+        "backGroundColor": "#DDDDDD",
+        "analogReleaseTime": 0.05,
         "analogData":[
             {
                 "offData":{
@@ -20,13 +21,13 @@
                 "onData":{
                     "leftImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_left.png",
                     "leftColorChange": true,
-                    "leftColor":"#FFFFFF",
+                    "leftColor":"#0000FF",
                     "rightImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_right.png",
                     "rightColorChange": true,
-                    "rightColor":"#FFFFFF",
+                    "rightColor":"#0000FF",
                     "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
                     "centerColorChange": true,
-                    "centerColor":"#FFFFFF"
+                    "centerColor":"#0000FF"
                 }
             },
             {
@@ -44,13 +45,13 @@
                 "onData":{
                     "leftImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_left.png",
                     "leftColorChange": true,
-                    "leftColor":"#FFFFFF",
+                    "leftColor":"#0000FF",
                     "rightImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_right.png",
                     "rightColorChange": true,
-                    "rightColor":"#FFFFFF",
+                    "rightColor":"#0000FF",
                     "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
                     "centerColorChange": true,
-                    "centerColor":"#FFFFFF"
+                    "centerColor":"#0000FF"
                 }
             }
         ],
@@ -162,6 +163,22 @@
         }
     ]
 
+    // configの読み込み
+
+    // 背景色の変更
+    if(configData["backGroundTransparent"]){
+        $("body").css({
+            "background": "transparent !important"
+        });
+    }else{
+        $("body").css({
+            "background-color": configData["backGroundColor"]
+        });
+    }
+
+    //releaseTimeの適用
+    axisManager.setReleaseTime(configData["analogReleaseTime"]);
+
     // 色の変換(RGB→filter)
     for(let i = 0; i < configData["analogData"].length; i++){
         configData["analogData"][i]["offData"]["leftColor"] = hexToFilter(configData["analogData"][i]["offData"]["leftColor"]);
@@ -184,13 +201,13 @@
 	// ゲームパッドを接続時
 	window.addEventListener("gamepadconnected",function(e){
 		let gamepad = e.gamepad;
-        console.log(e.type + " timestamp:" + e.timeStamp + " index:" + gamepad.index)
+        console.log(e.type + " timestamp:" + e.timeStamp + " index:" + gamepad.index);
 	});
 
 	// ゲームパッドの接続を解除時
 	window.addEventListener("gamepaddisconnected",function(e){
 		let gamepad = e.gamepad;
-        console.log(e.type + " timestamp:" + e.timeStamp + " index:" + gamepad.index)
+        console.log(e.type + " timestamp:" + e.timeStamp + " index:" + gamepad.index);
 	});
 
 	// 繰り返し実行される関数(120回/秒)
@@ -206,33 +223,71 @@
             //ボタン表示
             for(let i = 0; i < ButtonSelectors.length; i++){
                 if(gamepads[playerNum].buttons[i].pressed){
-                    let cssData = {"backGround": 'url(' + configData["buttonData"][i]["onData"]["imagePath"] + ')'}
+                    let cssData = {"background": "url(" + configData["buttonData"][i]["onData"]["imagePath"] + ")"};
                     if(configData["buttonData"][i]["onData"]["colorChange"]){
-                        cssData["filter"] = configData["buttonData"][i]["onData"]["color"]
+                        cssData["filter"] = configData["buttonData"][i]["onData"]["color"];
                     } 
-                    $(ButtonSelectors[i]).css(cssData)
+                    $(ButtonSelectors[i]).css(cssData);
                 }else{
-                    let cssData = {"backGround": 'url(' + configData["buttonData"][i]["offData"]["imagePath"] + ')'}
+                    let cssData = {"background": "url(" + configData["buttonData"][i]["offData"]["imagePath"] + ")"};
                     if(configData["buttonData"][i]["offData"]["colorChange"]){
-                        cssData["filter"] = configData["buttonData"][i]["offData"]["color"]
+                        cssData["filter"] = configData["buttonData"][i]["offData"]["color"];
                     } 
-                    $(ButtonSelectors[i]).css(cssData)
+                    $(ButtonSelectors[i]).css(cssData);
                 }
             }
 
-            // 軸情報
-            //var axes = gamepad.axes;
-            //var j;
-            //var n = axes.length;
-            //a.push("axes: {");
-            //for(j=0;j<n;j++){
-            //    a.push("  \"" + j + "\": " + (axes[j]));
-            //}
-            //a.push("}");
+            //アナログデバイス表示
+            axisManager.setCurrentAngle(gamepads[playerNum].axes, Date.now());
+            for(let i = 0; i < AnalogSelectors.length; i++){
+                let centerCssData;
+                let leftCssData;
+                let rightCssData;
+                if(axisManager.isMoveFixed(i)){
+                    centerCssData = {"background": "url(" + configData["analogData"][i]["onData"]["centerImagePath"] + ")"};
+                    if(configData["analogData"][i]["onData"]["centerColorChange"]){
+                        centerCssData["filter"] = configData["analogData"][i]["onData"]["centerColor"];
+                    }
+                    if(axisManager.getFixedMoveDirection(i) < 0){
+                        leftCssData = {"background": "url(" + configData["analogData"][i]["onData"]["leftImagePath"] + ")"};
+                        if(configData["analogData"][i]["onData"]["leftColorChange"]){
+                            leftCssData["filter"] = configData["analogData"][i]["onData"]["leftColor"];
+                        }
+                        rightCssData = {"background": "url(" + configData["analogData"][i]["offData"]["rightImagePath"] + ")"};
+                        if(configData["analogData"][i]["offData"]["rightColorChange"]){
+                            rightCssData["filter"] = configData["analogData"][i]["offData"]["rightColor"];
+                        }
+                    }else{
+                        leftCssData = {"background": "url(" + configData["analogData"][i]["offData"]["leftImagePath"] + ")"};
+                        if(configData["analogData"][i]["offData"]["leftColorChange"]){
+                            leftCssData["filter"] = configData["analogData"][i]["offData"]["leftColor"];
+                        }
+                        rightCssData = {"background": "url(" + configData["analogData"][i]["onData"]["rightImagePath"] + ")"};
+                        if(configData["analogData"][i]["onData"]["rightColorChange"]){
+                            rightCssData["filter"] = configData["analogData"][i]["onData"]["rightColor"];
+                        }
+                    }
 
-        // Gamepad オブジェクトが存在しない
-        }else{
-            $("error-message").text("PLAYER" + String(playerNum) + "のコントローラが見つかりません。接続して何らかのボタンを押してください。");
+                }else{
+                    centerCssData = {"background": "url(" + configData["analogData"][i]["offData"]["centerImagePath"] + ")"};
+                    leftCssData = {"background": "url(" + configData["analogData"][i]["offData"]["leftImagePath"] + ")"};
+                    rightCssData = {"background": "url(" + configData["analogData"][i]["offData"]["rightImagePath"] + ")"};
+                    if(configData["analogData"][i]["offData"]["centerColorChange"]){
+                        centerCssData["filter"] = configData["analogData"][i]["offData"]["centerColor"];
+                    }
+                    if(configData["analogData"][i]["offData"]["leftColorChange"]){
+                        leftCssData["filter"] = configData["analogData"][i]["offData"]["leftColor"];
+                    }
+                    if(configData["analogData"][i]["offData"]["rightColorChange"]){
+                        rightCssData["filter"] = configData["analogData"][i]["offData"]["rightColor"];
+                    }
+                }
+                centerCssData["transform"] = "rotate(" + String(axisManager.getCurrentAngle(i) * 180) + "deg)";
+                $(AnalogSelectors[i]["center"]).css(centerCssData);
+                $(AnalogSelectors[i]["left"]).css(leftCssData);
+                $(AnalogSelectors[i]["right"]).css(rightCssData);
+            }
+            axisManager.goNextFrame();
         }
 	},1000/120);
 
