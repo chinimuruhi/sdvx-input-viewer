@@ -7,10 +7,16 @@ class AxisManager {
       this.releaseTime = 0;
       this.releaseTimeCount = [0, 0];
       this.beforeFixedMoveDirection = [0, 0];
+      this.sensitivity = 1.0;
+      this.beforeFixedAngles = [0, 0];
     }
 
     setReleaseTime(releaseTime){
         this.releaseTime = releaseTime;
+    }
+
+    setSensitivity(sensitivity){
+        this.sensitivity = sensitivity;
     }
 
     setCurrentAngle(angles, timeStamp){
@@ -18,8 +24,14 @@ class AxisManager {
         this.currentTimeStamp = timeStamp;
     }
 
-    getCurrentAngle(index){
-        return this.currentAngle[index];   
+    getFixedAngle(index){
+        let result = this.beforeFixedAngles[index] + (this.currentAngle[index] - this.beforeAngle[index]) * this.sensitivity;
+        if(result > 1){
+            result = -1 + result % 1;
+        }else if(result < -1){
+            result = 1 + result % 1;
+        }
+        return result;   
     }
 
     goNextFrame(){
@@ -30,7 +42,8 @@ class AxisManager {
                 this.releaseTimeCount[i] = 0;
             }
         }
-        this.beforeFixedMoveDirection = [this.getFixedMoveDirection(0), this.getFixedMoveDirection(1)]
+        this.beforeFixedMoveDirection = [this.getFixedMoveDirection(0), this.getFixedMoveDirection(1)];
+        this.beforeFixedAngles = [this.getFixedAngle(0), this.getFixedAngle(1)];
         this.beforeAngle = this.currentAngle;
         this.beforeTimeStamp = this.currentTimeStamp;
     }

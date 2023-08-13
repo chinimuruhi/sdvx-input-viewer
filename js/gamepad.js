@@ -1,146 +1,8 @@
 'use strict';
 
 (function (){
-    const configData = {
-        "playerNum": 0,
-        "backGroundTransparent": false,
-        "backGroundColor": "#000000",
-        "analogReleaseTime": 0.05,
-        "analogData":[
-            {
-                "offData":{
-                    "leftImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_left.png",
-                    "leftColorChange": true,
-                    "leftColor":"#DDDDDD",
-                    "rightImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_right.png",
-                    "rightColorChange": true,
-                    "rightColor":"#DDDDDD",
-                    "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
-                    "centerColorChange": true,
-                    "centerColor":"#DDDDDD"
-                },
-                "onData":{
-                    "leftImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_left.png",
-                    "leftColorChange": true,
-                    "leftColor":"#0000FF",
-                    "rightImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_right.png",
-                    "rightColorChange": true,
-                    "rightColor":"#0000FF",
-                    "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
-                    "centerColorChange": true,
-                    "centerColor":"#0000FF"
-                }
-            },
-            {
-                "offData":{
-                    "leftImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_left.png",
-                    "leftColorChange": true,
-                    "leftColor":"#DDDDDD",
-                    "rightImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_right.png",
-                    "rightColorChange": true,
-                    "rightColor":"#DDDDDD",
-                    "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
-                    "centerColorChange": true,
-                    "centerColor":"#DDDDDD"
-                },
-                "onData":{
-                    "leftImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_left.png",
-                    "leftColorChange": true,
-                    "leftColor":"#0000FF",
-                    "rightImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_right.png",
-                    "rightColorChange": true,
-                    "rightColor":"#0000FF",
-                    "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
-                    "centerColorChange": true,
-                    "centerColor":"#0000FF"
-                }
-            }
-        ],
-        "buttonData": [
-            {
-                "offData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/start.png",
-                    "colorChange": "true",
-                    "color": "#DDDDDD"
-                },
-                "onData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/start.png",
-                    "colorChange": "true",
-                    "color": "#FFFFFF"
-                }
-            },
-            {
-                "offData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                    "colorChange": "true",
-                    "color": "#DDDDDD"
-                },
-                "onData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                    "colorChange": "true",
-                    "color": "#FFFFFF"
-                }
-            },        {
-                "offData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                    "colorChange": "true",
-                    "color": "#DDDDDD"
-                },
-                "onData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                    "colorChange": "true",
-                    "color": "#FFFFFF"
-                }
-            },        {
-                "offData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                    "colorChange": "true",
-                    "color": "#DDDDDD"
-                },
-                "onData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                    "colorChange": "true",
-                    "color": "#FFFFFF"
-                }
-            },        {
-                "offData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                    "colorChange": "true",
-                    "color": "#DDDDDD"
-                },
-                "onData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                    "colorChange": "true",
-                    "color": "#FFFFFF"
-                }
-            },        {
-                "offData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
-                    "colorChange": "true",
-                    "color": "#DDDDDD"
-                },
-                "onData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
-                    "colorChange": "true",
-                    "color": "#FFFFFF"
-                }
-            },        {
-                "offData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
-                    "colorChange": "true",
-                    "color": "#DDDDDD"
-                },
-                "onData":{
-                    "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
-                    "colorChange": "true",
-                    "color": "#FFFFFF"
-                }
-            }
-        ]
-    }
-
     // 各ボタンのセレクタ
-    const ButtonSelectors = [
+    const buttonSelectors = [
         "#starts .start",
         "#buttons .a",
         "#buttons .b",
@@ -151,7 +13,7 @@
     ]
 
     // アナログデバイスのセレクタ
-    const AnalogSelectors = [
+    const analogSelectors = [
         {
             "left": "#analogs .blue .left",
             "right": "#analogs .blue .right",
@@ -165,6 +27,11 @@
     ]
 
     // configの読み込み
+    const configData = JSON.parse(localStorage.getItem('config'));
+    if(typeof(configData) !== "object"){
+        $("#error-message").text("設定データが壊れています。");
+        return;
+    }
 
     // 背景色の変更
     if(configData["backGroundTransparent"]){
@@ -177,8 +44,9 @@
         });
     }
 
-    // releaseTimeの適用
+    // つまみ設定の適用
     axisManager.setReleaseTime(configData["analogReleaseTime"]);
+    axisManager.setSensitivity(configData["analogSensitivity"]);
 
     // 色の変換(RGB→filter)
     for(let i = 0; i < configData["analogData"].length; i++){
@@ -196,18 +64,18 @@
 
 	// サポートチェック
 	if(!(window.Gamepad)){
-		$("error-message").text("Gamepad API に未対応");
+		$("#error-message").text("Gamepad API に未対応");
 		return;
 	}
 	// ゲームパッドを接続時
 	window.addEventListener("gamepadconnected",function(e){
-		let gamepad = e.gamepad;
+		const gamepad = e.gamepad;
         console.log(e.type + " timestamp:" + e.timeStamp + " index:" + gamepad.index);
 	});
 
 	// ゲームパッドの接続を解除時
 	window.addEventListener("gamepaddisconnected",function(e){
-		let gamepad = e.gamepad;
+		const gamepad = e.gamepad;
         console.log(e.type + " timestamp:" + e.timeStamp + " index:" + gamepad.index);
 	});
 
@@ -219,25 +87,25 @@
         // Gamepad オブジェクトが存在する
         if(gamepads[configData["playerNum"]]){
             //ボタン表示
-            for(let i = 0; i < ButtonSelectors.length; i++){
+            for(let i = 0; i < buttonSelectors.length; i++){
                 if(gamepads[configData["playerNum"]].buttons[i].pressed){
                     let cssData = {"background": "url(" + configData["buttonData"][i]["onData"]["imagePath"] + ")"};
                     if(configData["buttonData"][i]["onData"]["colorChange"]){
                         cssData["filter"] = configData["buttonData"][i]["onData"]["color"];
                     } 
-                    $(ButtonSelectors[i]).css(cssData);
+                    $(buttonSelectors[i]).css(cssData);
                 }else{
                     let cssData = {"background": "url(" + configData["buttonData"][i]["offData"]["imagePath"] + ")"};
                     if(configData["buttonData"][i]["offData"]["colorChange"]){
                         cssData["filter"] = configData["buttonData"][i]["offData"]["color"];
                     } 
-                    $(ButtonSelectors[i]).css(cssData);
+                    $(buttonSelectors[i]).css(cssData);
                 }
             }
 
             //アナログデバイス表示
             axisManager.setCurrentAngle(gamepads[configData["playerNum"]].axes, Date.now());
-            for(let i = 0; i < AnalogSelectors.length; i++){
+            for(let i = 0; i < analogSelectors.length; i++){
                 let centerCssData;
                 let leftCssData;
                 let rightCssData;
@@ -280,12 +148,15 @@
                         rightCssData["filter"] = configData["analogData"][i]["offData"]["rightColor"];
                     }
                 }
-                centerCssData["transform"] = "rotate(" + String(axisManager.getCurrentAngle(i) * 180) + "deg)";
-                $(AnalogSelectors[i]["center"]).css(centerCssData);
-                $(AnalogSelectors[i]["left"]).css(leftCssData);
-                $(AnalogSelectors[i]["right"]).css(rightCssData);
+                centerCssData["transform"] = "rotate(" + String(axisManager.getFixedAngle(i) * 180) + "deg)";
+                $(analogSelectors[i]["center"]).css(centerCssData);
+                $(analogSelectors[i]["left"]).css(leftCssData);
+                $(analogSelectors[i]["right"]).css(rightCssData);
             }
             axisManager.goNextFrame();
+            $("#error-message").text("");
+        }else{
+            $("#error-message").text("コントローラを接続して任意のボタンを押してください。");
         }
 	},1000/120);
 

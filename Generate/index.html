@@ -1,15 +1,19 @@
 <html>
+
 <head>
     <title>SDVX Input Viewer - Generate</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
     <!-- ヘッダー -->
     <nav class="navbar navbar-dark bg-dark navbar-fixed-top navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand">SDVX Input Viewer</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -28,32 +32,922 @@
                     </li>
                 </ul>
             </div>
-        </div>    
+        </div>
     </nav>
 
     <!-- ページコンテンツ -->
     <div class="main">
         <div class="container">
-            <h1>Options</h1> 
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <form id="options">
+                <h1>設定（Options）</h1>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            一般（General）<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <div class="mb-3">
+                            <label for="playerNum" class="form-label">Player Number</label>
+                            <input type="number" class="form-control" id="playerNum" name="playerNum"
+                                aria-describedby="playerNumHelp" placeholder="0">
+                            <div id="playerNumHelp" class="form-text">
+                                基本的には0です。複数のコントローラがPCに接続されており、0で反応しない場合には別の数字をお試しください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="backGroundTransparent" class="form-check-label">BackGround
+                                    Transparent</label>
+                                <input type="checkbox" class="form-check-input" id="backGroundTransparent"
+                                    name="backGroundTransparent" aria-describedby="backGroundTransparentHelp">
+                            </div>
+                            <div id="backGroundTransparentHelp" class="form-text">OBS等で取り込む際、背景を透明にしたい場合はチェックをつけてください。
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="backGroundColor" class="form-label">BackGround Color</label>
+                            <input type="color" class="form-control form-control-color" id="backGroundColor"
+                                name="backGroundColor" aria-describedby="backGroundColorHelp">
+                            <div id="backGroundColorHelp" class="form-text">背景色を指定できます。※BackGround
+                                Transparentが有効の場合は適用されません。</div>
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            つまみ（Analog Device）<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <div class="mb-3">
+                            <label for="analogSensitivity" class="form-label">Sensitivity</label>
+                            <input type="number" class="form-control" id="analogSensitivity" name="analogSensitivity"
+                                aria-describedby="analogSensitivityHelp" placeholder="1.0">
+                            <div id="analogSensitivityHelp" class="form-text">角度表示用のつまみ感度です。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogReleaseTime" class="form-label">Release Time(s)</label>
+                            <input type="number" class="form-control" id="analogReleaseTime" name="analogReleaseTime"
+                                aria-describedby="analogReleaseTimeHelp" placeholder="0">
+                            <div id="analogReleaseTimeHelp" class="form-text">
+                                つまみを回し終わった後追加で表示する時間です。正確な入力を表示したい場合は0、つまみが回っていない時間による点滅が気になる方は適当な値を入力して下さい。</div>
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            左つまみ（Left Analog Device）<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <h5>反時計回り入力（counterclockwise）</h5>
+                        <h6>OFF（入力されていない時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[0][offData][leftImagePath]" class="form-label">Image
+                                Path(OFF)</label>
+                            <input type="text" class="form-control" id="analogData[0][offData][leftImagePath]"
+                                name="analogData[0][offData][leftImagePath]"
+                                aria-describedby="analogData[0][offData][leftImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[0][offData][leftImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[0][offData][leftColorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[0][offData][leftColorChange]"
+                                    name="analogData[0][offData][leftColorChange]"
+                                    aria-describedby="analogData[0][offData][leftColorChange]Help">
+                            </div>
+                            <div id="analogData[0][offData][leftColorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[0][offData][leftColor]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[0][offData][leftColor]" name="analogData[0][offData][leftColor]"
+                                aria-describedby="analogData[0][offData][leftColor]Help" placeholder="0">
+                        </div>
+                        <h6>ON（入力されている時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[0][onData][leftImagePath]" class="form-label">Image Path(ON)</label>
+                            <input type="text" class="form-control" id="analogData[0][onData][leftImagePath]"
+                                name="analogData[0][onData][leftImagePath]"
+                                aria-describedby="analogData[0][onData][leftImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[0][onData][leftImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[0][onData][leftColorChange]" class="form-check-label">Image Color
+                                    Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[0][onData][leftColorChange]"
+                                    name="analogData[0][onData][leftColorChange]"
+                                    aria-describedby="analogData[0][onData][leftColorChange]Help">
+                            </div>
+                            <div id="analogData[0][onData][leftColorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[0][onData][leftColor]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[0][onData][leftColor]" name="analogData[0][onData][leftColor]"
+                                aria-describedby="analogData[0][onData][leftColor]Help" placeholder="0">
+                        </div>
+                        <h5>時計回り入力（clockwise）</h5>
+                        <h6>OFF（入力されていない時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[0][offData][rightImagePath]" class="form-label">Image
+                                Path(OFF)</label>
+                            <input type="text" class="form-control" id="analogData[0][offData][rightImagePath]"
+                                name="analogData[0][offData][rightImagePath]"
+                                aria-describedby="analogData[0][offData][rightImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[0][offData][rightImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[0][offData][rightColorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[0][offData][rightColorChange]"
+                                    name="analogData[0][offData][rightColorChange]"
+                                    aria-describedby="analogData[0][offData][rightColorChange]Help">
+                            </div>
+                            <div id="analogData[0][offData][rightColorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[0][offData][rightColor]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[0][offData][rightColor]" name="analogData[0][offData][rightColor]"
+                                aria-describedby="analogData[0][offData][rightColor]Help" placeholder="0">
+                        </div>
+                        <h6>ON（入力されている時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[0][onData][rightImagePath]" class="form-label">Image Path(ON)</label>
+                            <input type="text" class="form-control" id="analogData[0][onData][rightImagePath]"
+                                name="analogData[0][onData][rightImagePath]"
+                                aria-describedby="analogData[0][onData][rightImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[0][onData][rightImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[0][onData][rightColorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[0][onData][rightColorChange]"
+                                    name="analogData[0][onData][rightColorChange]"
+                                    aria-describedby="analogData[0][onData][rightColorChange]Help">
+                            </div>
+                            <div id="analogData[0][onData][rightColorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[0][onData][rightColor]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[0][onData][rightColor]" name="analogData[0][onData][rightColor]"
+                                aria-describedby="analogData[0][onData][rightColor]Help" placeholder="0">
+                        </div>
+                        <h5>角度表示</h5>
+                        <h6>OFF（入力されていない時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[0][offData][centerImagePath]" class="form-label">Image
+                                Path(OFF)</label>
+                            <input type="text" class="form-control" id="analogData[0][offData][centerImagePath]"
+                                name="analogData[0][offData][centerImagePath]"
+                                aria-describedby="analogData[0][offData][centerImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[0][offData][centerImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[0][offData][centerColorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[0][offData][centerColorChange]"
+                                    name="analogData[0][offData][centerColorChange]"
+                                    aria-describedby="analogData[0][offData][centerColorChange]Help">
+                            </div>
+                            <div id="analogData[0][offData][centerColorChange]Help" class="form-text">
+                                黒の画像を指定している場合、Image Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[0][offData][centerColor]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[0][offData][centerColor]" name="analogData[0][offData][centerColor]"
+                                aria-describedby="analogData[0][offData][centerColor]Help" placeholder="0">
+                        </div>
+                        <h6>ON（入力されている時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[0][onData][centerImagePath]" class="form-label">Image
+                                Path(ON)</label>
+                            <input type="text" class="form-control" id="analogData[0][onData][centerImagePath]"
+                                name="analogData[0][onData][centerImagePath]"
+                                aria-describedby="analogData[0][onData][centerImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[0][onData][centerImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[0][onData][centerColorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[0][onData][centerColorChange]"
+                                    name="analogData[0][onData][centerColorChange]"
+                                    aria-describedby="analogData[0][onData][centerColorChange]Help">
+                            </div>
+                            <div id="analogData[0][onData][centerColorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[0][onData][centerColor]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[0][onData][centerColor]" name="analogData[0][onData][centerColor]"
+                                aria-describedby="analogData[0][onData][centerColor]Help" placeholder="0">
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            右つまみ（Right Analog Device）<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <h5>反時計回り入力（counterclockwise）</h5>
+                        <h6>OFF（入力されていない時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[1][offData][leftImagePath]" class="form-label">Image
+                                Path(OFF)</label>
+                            <input type="text" class="form-control" id="analogData[1][offData][leftImagePath]"
+                                name="analogData[1][offData][leftImagePath]"
+                                aria-describedby="analogData[1][offData][leftImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[1][offData][leftImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[1][offData][leftColorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[1][offData][leftColorChange]"
+                                    name="analogData[1][offData][leftColorChange]"
+                                    aria-describedby="analogData[1][offData][leftColorChange]Help">
+                            </div>
+                            <div id="analogData[1][offData][leftColorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[1][offData][leftColor]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[1][offData][leftColor]" name="analogData[1][offData][leftColor]"
+                                aria-describedby="analogData[1][offData][leftColor]Help" placeholder="0">
+                        </div>
+                        <h6>ON（入力されている時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[1][onData][leftImagePath]" class="form-label">Image Path(ON)</label>
+                            <input type="text" class="form-control" id="analogData[1][onData][leftImagePath]"
+                                name="analogData[1][onData][leftImagePath]"
+                                aria-describedby="analogData[1][onData][leftImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[1][onData][leftImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[1][onData][leftColorChange]" class="form-check-label">Image Color
+                                    Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[1][onData][leftColorChange]"
+                                    name="analogData[1][onData][leftColorChange]"
+                                    aria-describedby="analogData[1][onData][leftColorChange]Help">
+                            </div>
+                            <div id="analogData[1][onData][leftColorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[1][onData][leftColor]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[1][onData][leftColor]" name="analogData[1][onData][leftColor]"
+                                aria-describedby="analogData[1][onData][leftColor]Help" placeholder="0">
+                        </div>
+                        <h5>時計回り入力（clockwise）</h5>
+                        <h6>OFF（入力されていない時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[1][offData][rightImagePath]" class="form-label">Image
+                                Path(OFF)</label>
+                            <input type="text" class="form-control" id="analogData[1][offData][rightImagePath]"
+                                name="analogData[1][offData][rightImagePath]"
+                                aria-describedby="analogData[1][offData][rightImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[1][offData][rightImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[1][offData][rightColorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[1][offData][rightColorChange]"
+                                    name="analogData[1][offData][rightColorChange]"
+                                    aria-describedby="analogData[1][offData][rightColorChange]Help">
+                            </div>
+                            <div id="analogData[1][offData][rightColorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[1][offData][rightColor]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[1][offData][rightColor]" name="analogData[1][offData][rightColor]"
+                                aria-describedby="analogData[1][offData][rightColor]Help" placeholder="0">
+                        </div>
+                        <h6>ON（入力されている時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[1][onData][rightImagePath]" class="form-label">Image Path(ON)</label>
+                            <input type="text" class="form-control" id="analogData[1][onData][rightImagePath]"
+                                name="analogData[1][onData][rightImagePath]"
+                                aria-describedby="analogData[1][onData][rightImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[1][onData][rightImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[1][onData][rightColorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[1][onData][rightColorChange]"
+                                    name="analogData[1][onData][rightColorChange]"
+                                    aria-describedby="analogData[1][onData][rightColorChange]Help">
+                            </div>
+                            <div id="analogData[1][onData][rightColorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[1][onData][rightColor]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[1][onData][rightColor]" name="analogData[1][onData][rightColor]"
+                                aria-describedby="analogData[1][onData][rightColor]Help" placeholder="0">
+                        </div>
+                        <h5>角度表示</h5>
+                        <h6>OFF（入力されていない時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[1][offData][centerImagePath]" class="form-label">Image
+                                Path(OFF)</label>
+                            <input type="text" class="form-control" id="analogData[1][offData][centerImagePath]"
+                                name="analogData[1][offData][centerImagePath]"
+                                aria-describedby="analogData[1][offData][centerImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[1][offData][centerImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[1][offData][centerColorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[1][offData][centerColorChange]"
+                                    name="analogData[1][offData][centerColorChange]"
+                                    aria-describedby="analogData[1][offData][centerColorChange]Help">
+                            </div>
+                            <div id="analogData[1][offData][centerColorChange]Help" class="form-text">
+                                黒の画像を指定している場合、Image Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[1][offData][centerColor]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[1][offData][centerColor]" name="analogData[1][offData][centerColor]"
+                                aria-describedby="analogData[1][offData][centerColor]Help" placeholder="0">
+                        </div>
+                        <h6>ON（入力されている時）</h6>
+                        <div class="mb-3">
+                            <label for="analogData[1][onData][centerImagePath]" class="form-label">Image
+                                Path(ON)</label>
+                            <input type="text" class="form-control" id="analogData[1][onData][centerImagePath]"
+                                name="analogData[1][onData][centerImagePath]"
+                                aria-describedby="analogData[1][onData][centerImagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="analogData[1][onData][centerImagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="analogData[1][onData][centerColorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="analogData[1][onData][centerColorChange]"
+                                    name="analogData[1][onData][centerColorChange]"
+                                    aria-describedby="analogData[1][onData][centerColorChange]Help">
+                            </div>
+                            <div id="analogData[1][onData][centerColorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analogData[1][onData][centerColor]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="analogData[1][onData][centerColor]" name="analogData[1][onData][centerColor]"
+                                aria-describedby="analogData[1][onData][centerColor]Help" placeholder="0">
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            STARTボタン<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <h5>OFF（入力されていない時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[0][offData][imagePath]" class="form-label">Image Path(OFF)</label>
+                            <input type="text" class="form-control" id="buttonData[0][offData][imagePath]"
+                                name="buttonData[0][offData][imagePath]"
+                                aria-describedby="buttonData[0][offData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[0][offData][imagePath]Help" class="form-text">100 x 100pxの画像を想定しています。
+                                適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[0][offData][colorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[0][offData][colorChange]"
+                                    name="buttonData[0][offData][colorChange]"
+                                    aria-describedby="buttonData[0][offData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[0][offData][colorChange]Help" class="form-text">
+                                黒の画像を指定している場合、Image Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[0][offData][color]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[0][offData][color]" name="buttonData[0][offData][color]"
+                                aria-describedby="buttonData[0][offData][color]Help" placeholder="0">
+                        </div>
+                        <h5>ON（入力されている時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[0][onData][imagePath]" class="form-label">Image
+                                Path(ON)</label>
+                            <input type="text" class="form-control" id="buttonData[0][onData][imagePath]"
+                                name="buttonData[0][onData][imagePath]"
+                                aria-describedby="buttonData[0][onData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[0][onData][imagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[0][onData][colorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[0][onData][colorChange]"
+                                    name="buttonData[0][onData][colorChange]"
+                                    aria-describedby="buttonData[0][onData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[0][onData][colorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[0][onData][color]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[0][onData][color]" name="buttonData[0][onData][color]"
+                                aria-describedby="buttonData[0][onData][color]Help" placeholder="0">
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            BT-A<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <h5>OFF（入力されていない時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[1][offData][imagePath]" class="form-label">Image Path(OFF)</label>
+                            <input type="text" class="form-control" id="buttonData[1][offData][imagePath]"
+                                name="buttonData[1][offData][imagePath]"
+                                aria-describedby="buttonData[1][offData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[1][offData][imagePath]Help" class="form-text">100 x 100pxの画像を想定しています。
+                                適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[1][offData][colorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[1][offData][colorChange]"
+                                    name="buttonData[1][offData][colorChange]"
+                                    aria-describedby="buttonData[1][offData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[1][offData][colorChange]Help" class="form-text">
+                                黒の画像を指定している場合、Image Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[1][offData][color]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[1][offData][color]" name="buttonData[1][offData][color]"
+                                aria-describedby="buttonData[1][offData][color]Help" placeholder="0">
+                        </div>
+                        <h5>ON（入力されている時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[1][onData][imagePath]" class="form-label">Image
+                                Path(ON)</label>
+                            <input type="text" class="form-control" id="buttonData[1][onData][imagePath]"
+                                name="buttonData[1][onData][imagePath]"
+                                aria-describedby="buttonData[1][onData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[1][onData][imagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[1][onData][colorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[1][onData][colorChange]"
+                                    name="buttonData[1][onData][colorChange]"
+                                    aria-describedby="buttonData[1][onData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[1][onData][colorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[1][onData][color]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[1][onData][color]" name="buttonData[1][onData][color]"
+                                aria-describedby="buttonData[1][onData][color]Help" placeholder="0">
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            BT-B<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <h5>OFF（入力されていない時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[2][offData][imagePath]" class="form-label">Image Path(OFF)</label>
+                            <input type="text" class="form-control" id="buttonData[2][offData][imagePath]"
+                                name="buttonData[2][offData][imagePath]"
+                                aria-describedby="buttonData[2][offData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[2][offData][imagePath]Help" class="form-text">100 x 100pxの画像を想定しています。
+                                適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[2][offData][colorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[2][offData][colorChange]"
+                                    name="buttonData[2][offData][colorChange]"
+                                    aria-describedby="buttonData[2][offData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[2][offData][colorChange]Help" class="form-text">
+                                黒の画像を指定している場合、Image Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[2][offData][color]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[2][offData][color]" name="buttonData[2][offData][color]"
+                                aria-describedby="buttonData[2][offData][color]Help" placeholder="0">
+                        </div>
+                        <h5>ON（入力されている時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[2][onData][imagePath]" class="form-label">Image
+                                Path(ON)</label>
+                            <input type="text" class="form-control" id="buttonData[2][onData][imagePath]"
+                                name="buttonData[2][onData][imagePath]"
+                                aria-describedby="buttonData[2][onData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[2][onData][imagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[2][onData][colorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[2][onData][colorChange]"
+                                    name="buttonData[2][onData][colorChange]"
+                                    aria-describedby="buttonData[2][onData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[2][onData][colorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[2][onData][color]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[2][onData][color]" name="buttonData[2][onData][color]"
+                                aria-describedby="buttonData[2][onData][color]Help" placeholder="0">
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            BT-C<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <h5>OFF（入力されていない時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[3][offData][imagePath]" class="form-label">Image Path(OFF)</label>
+                            <input type="text" class="form-control" id="buttonData[3][offData][imagePath]"
+                                name="buttonData[3][offData][imagePath]"
+                                aria-describedby="buttonData[3][offData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[3][offData][imagePath]Help" class="form-text">100 x 100pxの画像を想定しています。
+                                適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[3][offData][colorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[3][offData][colorChange]"
+                                    name="buttonData[3][offData][colorChange]"
+                                    aria-describedby="buttonData[3][offData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[3][offData][colorChange]Help" class="form-text">
+                                黒の画像を指定している場合、Image Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[3][offData][color]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[3][offData][color]" name="buttonData[3][offData][color]"
+                                aria-describedby="buttonData[3][offData][color]Help" placeholder="0">
+                        </div>
+                        <h5>ON（入力されている時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[3][onData][imagePath]" class="form-label">Image
+                                Path(ON)</label>
+                            <input type="text" class="form-control" id="buttonData[3][onData][imagePath]"
+                                name="buttonData[3][onData][imagePath]"
+                                aria-describedby="buttonData[3][onData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[3][onData][imagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[3][onData][colorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[3][onData][colorChange]"
+                                    name="buttonData[3][onData][colorChange]"
+                                    aria-describedby="buttonData[3][onData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[3][onData][colorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[3][onData][color]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[3][onData][color]" name="buttonData[3][onData][color]"
+                                aria-describedby="buttonData[3][onData][color]Help" placeholder="0">
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            BT-D<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <h5>OFF（入力されていない時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[4][offData][imagePath]" class="form-label">Image Path(OFF)</label>
+                            <input type="text" class="form-control" id="buttonData[4][offData][imagePath]"
+                                name="buttonData[4][offData][imagePath]"
+                                aria-describedby="buttonData[4][offData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[4][offData][imagePath]Help" class="form-text">100 x 100pxの画像を想定しています。
+                                適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[4][offData][colorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[4][offData][colorChange]"
+                                    name="buttonData[4][offData][colorChange]"
+                                    aria-describedby="buttonData[4][offData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[4][offData][colorChange]Help" class="form-text">
+                                黒の画像を指定している場合、Image Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[4][offData][color]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[4][offData][color]" name="buttonData[4][offData][color]"
+                                aria-describedby="buttonData[4][offData][color]Help" placeholder="0">
+                        </div>
+                        <h5>ON（入力されている時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[4][onData][imagePath]" class="form-label">Image
+                                Path(ON)</label>
+                            <input type="text" class="form-control" id="buttonData[4][onData][imagePath]"
+                                name="buttonData[4][onData][imagePath]"
+                                aria-describedby="buttonData[4][onData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[4][onData][imagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[4][onData][colorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[4][onData][colorChange]"
+                                    name="buttonData[4][onData][colorChange]"
+                                    aria-describedby="buttonData[4][onData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[4][onData][colorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[4][onData][color]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[4][onData][color]" name="buttonData[4][onData][color]"
+                                aria-describedby="buttonData[4][onData][color]Help" placeholder="0">
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            FX-L<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <h5>OFF（入力されていない時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[5][offData][imagePath]" class="form-label">Image Path(OFF)</label>
+                            <input type="text" class="form-control" id="buttonData[5][offData][imagePath]"
+                                name="buttonData[5][offData][imagePath]"
+                                aria-describedby="buttonData[5][offData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[5][offData][imagePath]Help" class="form-text">100 x 100pxの画像を想定しています。
+                                適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[5][offData][colorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[5][offData][colorChange]"
+                                    name="buttonData[5][offData][colorChange]"
+                                    aria-describedby="buttonData[5][offData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[5][offData][colorChange]Help" class="form-text">
+                                黒の画像を指定している場合、Image Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[5][offData][color]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[5][offData][color]" name="buttonData[5][offData][color]"
+                                aria-describedby="buttonData[5][offData][color]Help" placeholder="0">
+                        </div>
+                        <h5>ON（入力されている時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[5][onData][imagePath]" class="form-label">Image
+                                Path(ON)</label>
+                            <input type="text" class="form-control" id="buttonData[5][onData][imagePath]"
+                                name="buttonData[5][onData][imagePath]"
+                                aria-describedby="buttonData[5][onData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[5][onData][imagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[5][onData][colorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[5][onData][colorChange]"
+                                    name="buttonData[5][onData][colorChange]"
+                                    aria-describedby="buttonData[5][onData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[5][onData][colorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[5][onData][color]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[5][onData][color]" name="buttonData[5][onData][color]"
+                                aria-describedby="buttonData[5][onData][color]Help" placeholder="0">
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            FX-R<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <h5>OFF（入力されていない時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[6][offData][imagePath]" class="form-label">Image Path(OFF)</label>
+                            <input type="text" class="form-control" id="buttonData[6][offData][imagePath]"
+                                name="buttonData[6][offData][imagePath]"
+                                aria-describedby="buttonData[6][offData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[6][offData][imagePath]Help" class="form-text">100 x 100pxの画像を想定しています。
+                                適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[6][offData][colorChange]" class="form-check-label">Image
+                                    Color Change(OFF)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[6][offData][colorChange]"
+                                    name="buttonData[6][offData][colorChange]"
+                                    aria-describedby="buttonData[6][offData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[6][offData][colorChange]Help" class="form-text">
+                                黒の画像を指定している場合、Image Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[6][offData][color]" class="form-label">Color(OFF)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[6][offData][color]" name="buttonData[6][offData][color]"
+                                aria-describedby="buttonData[6][offData][color]Help" placeholder="0">
+                        </div>
+                        <h5>ON（入力されている時）</h5>
+                        <div class="mb-3">
+                            <label for="buttonData[6][onData][imagePath]" class="form-label">Image
+                                Path(ON)</label>
+                            <input type="text" class="form-control" id="buttonData[6][onData][imagePath]"
+                                name="buttonData[6][onData][imagePath]"
+                                aria-describedby="buttonData[6][onData][imagePath]Help"
+                                placeholder="https://example.com/100x100.png">
+                            <div id="buttonData[6][onData][imagePath]Help" class="form-text">100 x
+                                100pxの画像を想定しています。適当な場所にアップロードし、そのURLをご指定ください。</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <label for="buttonData[6][onData][colorChange]" class="form-check-label">Image
+                                    Color Change(ON)</label>
+                                <input type="checkbox" class="form-check-input"
+                                    id="buttonData[6][onData][colorChange]"
+                                    name="buttonData[6][onData][colorChange]"
+                                    aria-describedby="buttonData[6][onData][colorChange]Help">
+                            </div>
+                            <div id="buttonData[6][onData][colorChange]Help" class="form-text">黒の画像を指定している場合、Image
+                                Color Changeを有効にすることで下で画像を指定した色に変更することができます。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="buttonData[6][onData][color]" class="form-label">Color(ON)</label>
+                            <input type="color" class="form-control form-control-color"
+                                id="buttonData[6][onData][color]" name="buttonData[6][onData][color]"
+                                aria-describedby="buttonData[6][onData][color]Help" placeholder="0">
+                        </div>
+                    </div>
+                </details>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="btn btn-primary btn-lg">Generate</button>
+                </div>
+            </form>
         </div>
     </div>
 
     <!-- フッター -->
     <footer class="footer">
         <div class="container text-center">
-          <p class="text-muted">©︎2023 chinimuruhi</p>
+            <p class="text-muted">©︎2023 chinimuruhi</p>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="../js/jquery.serialize-object.js"></script>
+    <script src="../js/config.js"></script>
 </body>
+
 </html>

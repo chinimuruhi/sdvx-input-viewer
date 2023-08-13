@@ -8,22 +8,25 @@
     padding: 100px 15px 100px 0px;
 }
 
-.main .container h1{
+.main .container h1 {
     padding: 0.5em;
     color: #010101;
     background: #DDDDDD;
     border-bottom: solid 3px #999999;
 }
 
-.main .container h2{
+.main .container h2 {
     padding: 0.3em;
     border-bottom: solid 2px black;
 }
 
-.main .container h3{
+.main .container h3 {
     padding: 0.25em 0.2em;
-    background: transparent;
-    border-left: solid 10px gray;
+}
+
+.main .container h5 {
+    padding: 0.3em;
+    border-bottom: solid 1px black;
 }
 
 .footer {
@@ -40,6 +43,94 @@
     padding: 0 15 0 100px;
 }
 
-.footer  .container .text-muted {
+.footer .container .text-muted {
     margin: 0px 0;
+}
+
+/* アコーディオンUI */
+summary {
+    display: block;
+    margin: 5px;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+.summary_inner {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border: 1px solid #999999;
+    font-weight: bold;
+    color: #000000;
+}
+
+.icon {
+    display: block;
+    position: relative;
+    width: 24px;
+    margin-left: 6px;
+    flex-shrink: 0;
+    transform-origin: center 43%;
+    transition: transform 0.4s;
+}
+
+details[open] .icon {
+    transform: rotate(180deg);
+}
+
+.icon::before,
+.icon::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 3px;
+    background-color: #202020;
+}
+
+.icon::before {
+    left: 0;
+    transform: rotate(45deg);
+}
+
+.icon::after {
+    right: 0;
+    transform: rotate(-45deg);
+}
+
+@keyframes close-animation {
+    from {
+        transform: rotate(180deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+details[open] .summary_inner::after {
+    animation: 0.4s open-animation forwards;
+}
+
+@keyframes open-animation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+.details-content {
+    background-color: #f2f2f2;
+    padding: 24px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
