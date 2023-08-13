@@ -1,11 +1,19 @@
 (function (){
-    const configData = JSON.parse(localStorage.getItem('config'));
-    if(typeof(configData) !== "object"){
+    const localStorageData = localStorage.getItem('config');
+    try {
+        if(localStorageData){
+            initialize(JSON.parse(localStorageData));
+        }else{
+            console.log("fetch");
+            fetch("../js/default-config.json")
+                .then( response => response.json())
+                .then( data => initialize(data));
+        }
+    } catch(e) {
+        console.log("fetch");
         fetch("../js/default-config.json")
             .then( response => response.json())
             .then( data => initialize(data));
-    }else{
-        initialize(configData);
     }
 })();
 
@@ -39,5 +47,5 @@ function initialize(configData){
 // フォーム送信時
 $('form#options').submit(function () {
     localStorage.setItem('config', $('form#options').serializeJSON());
-    window.open('sdvx-input-viewer/Viewer');
+    window.open('/sdvx-input-viewer/Viewer');
 });
