@@ -134,3 +134,7 @@ details[open] .summary_inner::after {
     flex-direction: column;
     gap: 16px;
 }
+
+#error-message  {
+    color: red;
+}
