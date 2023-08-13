@@ -18,6 +18,7 @@
 
 // フォーム書き換え（テキスト）
 function setFormValue(id, value){
+    console.log(id + ":" + value);
     if(typeof(value) === "boolean"){
         $('#' + id).val('checked', true);
     }else{
@@ -43,7 +44,7 @@ function initialize(configData){
 }
 
 // フォーム送信時
-$('form#options').submit(function () {
+$('button#generate').on('click', function() {
     localStorage.setItem('config', $('form#options').serializeJSON());
-    window.open('/sdvx-input-viewer/Viewer');
+    window.open('/sdvx-input-viewer/Viewer/');
 });
