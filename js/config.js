@@ -15,7 +15,7 @@
 function setFormValue(id, value){
     console.log(id + ":" + value);
     if(typeof(value) === "boolean"){
-        $('#' + id).val('checked', true);
+        $('#' + id).prop('checked', true);
     }else{
         $('#' + id).val(value);
     }
