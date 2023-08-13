@@ -33,7 +33,7 @@ function initialize(configData){
             for(let i = 0; i < configData[key1].length; i++){
                 for(const key2 in configData[key1][i]){
                     for(const key3 in configData[key1][i][key2]){
-                        setFormValue(key1 + "[" + i + "]" + "[" + key2 + "]" + "[" + key3 + "]", configData[key1][i][key2][key3]);
+                        setFormValue(key1 + "\\[" + i + "\\]" + "\\[" + key2 + "\\]" + "\\[" + key3 + "\\]", configData[key1][i][key2][key3]);
                     }
                 }
             }
