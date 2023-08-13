@@ -10,7 +10,6 @@
                 .then( data => initialize(data));
         }
     } catch(e) {
-        console.log("fetch");
         fetch("../js/default-config.json")
             .then( response => response.json())
             .then( data => initialize(data));
@@ -28,7 +27,6 @@ function setFormValue(id, value){
 
 // デフォルト設定読み込み後
 function initialize(configData){
-    console.log(configData);
     for(const key1 in configData){
         if(Array.isArray(configData[key1])){
             for(let i = 0; i < configData[key1].length; i++){
