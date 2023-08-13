@@ -9,48 +9,48 @@
             "offData":{
                 "leftImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_left.png",
                 "leftColorChange": true,
-                "leftColor":"#DDDDDD",
+                "leftColor":"#696969",
                 "rightImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_right.png",
                 "rightColorChange": true,
-                "rightColor":"#DDDDDD",
+                "rightColor":"#696969",
                 "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
                 "centerColorChange": true,
-                "centerColor":"#DDDDDD"
+                "centerColor":"#696969"
             },
             "onData":{
                 "leftImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_left.png",
                 "leftColorChange": true,
-                "leftColor":"#0000FF",
+                "leftColor":"#00ffff",
                 "rightImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_right.png",
                 "rightColorChange": true,
-                "rightColor":"#0000FF",
+                "rightColor":"#00ffff",
                 "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
                 "centerColorChange": true,
-                "centerColor":"#0000FF"
+                "centerColor":"#00ffff"
             }
         },
         {
             "offData":{
                 "leftImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_left.png",
                 "leftColorChange": true,
-                "leftColor":"#DDDDDD",
+                "leftColor":"#696969",
                 "rightImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_right.png",
                 "rightColorChange": true,
-                "rightColor":"#DDDDDD",
+                "rightColor":"#696969",
                 "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
                 "centerColorChange": true,
-                "centerColor":"#DDDDDD"
+                "centerColor":"#696969"
             },
             "onData":{
                 "leftImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_left.png",
                 "leftColorChange": true,
-                "leftColor":"#0000FF",
+                "leftColor":"#c71585",
                 "rightImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_right.png",
                 "rightColorChange": true,
-                "rightColor":"#0000FF",
+                "rightColor":"#c71585",
                 "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
                 "centerColorChange": true,
-                "centerColor":"#0000FF"
+                "centerColor":"#c71585"
             }
         }
     ],
@@ -58,80 +58,80 @@
         {
             "offData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/start.png",
-                "colorChange": "true",
-                "color": "#DDDDDD"
+                "colorChange": true,
+                "color": "#696969"
             },
             "onData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/start.png",
-                "colorChange": "true",
-                "color": "#FFFFFF"
+                "colorChange": true,
+                "color": "#1e90ff"
             }
         },
         {
             "offData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                "colorChange": "true",
-                "color": "#DDDDDD"
+                "colorChange": true,
+                "color": "#696969"
             },
             "onData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                "colorChange": "true",
+                "colorChange": true,
                 "color": "#FFFFFF"
             }
         },        {
             "offData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                "colorChange": "true",
-                "color": "#DDDDDD"
+                "colorChange": true,
+                "color": "#696969"
             },
             "onData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                "colorChange": "true",
+                "colorChange": true,
                 "color": "#FFFFFF"
             }
         },        {
             "offData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                "colorChange": "true",
-                "color": "#DDDDDD"
+                "colorChange": true,
+                "color": "#696969"
             },
             "onData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                "colorChange": "true",
+                "colorChange": true,
                 "color": "#FFFFFF"
             }
         },        {
             "offData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                "colorChange": "true",
-                "color": "#DDDDDD"
+                "colorChange": true,
+                "color": "#696969"
             },
             "onData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/button.png",
-                "colorChange": "true",
-                "color": "#FFFFFF"
-            }
-        },        {
-            "offData":{
-                "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
-                "colorChange": "true",
-                "color": "#DDDDDD"
-            },
-            "onData":{
-                "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
-                "colorChange": "true",
+                "colorChange": true,
                 "color": "#FFFFFF"
             }
         },        {
             "offData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
-                "colorChange": "true",
-                "color": "#DDDDDD"
+                "colorChange": true,
+                "color": "#696969"
             },
             "onData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
-                "colorChange": "true",
-                "color": "#FFFFFF"
+                "colorChange": true,
+                "color": "#ff6347"
+            }
+        },        {
+            "offData":{
+                "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
+                "colorChange": true,
+                "color": "#696969"
+            },
+            "onData":{
+                "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
+                "colorChange": true,
+                "color": "#ff6347"
             }
         }
     ]
