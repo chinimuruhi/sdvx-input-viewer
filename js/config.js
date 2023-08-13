@@ -2,17 +2,12 @@
     const localStorageData = localStorage.getItem('config');
     try {
         if(localStorageData){
-            initialize(JSON.parse(localStorageData));
+            setConfig(JSON.parse(localStorageData));
         }else{
-            console.log("fetch");
-            fetch("../js/default-config.json")
-                .then( response => response.json())
-                .then( data => initialize(data));
+            setDefaultConfig();
         }
     } catch(e) {
-        fetch("../js/default-config.json")
-            .then( response => response.json())
-            .then( data => initialize(data));
+        setDefaultConfig();
     }
 })();
 
@@ -26,8 +21,8 @@ function setFormValue(id, value){
     }
 }
 
-// デフォルト設定読み込み後
-function initialize(configData){
+// Configのフォームへの反映
+function setConfig(configData){
     for(const key1 in configData){
         if(Array.isArray(configData[key1])){
             for(let i = 0; i < configData[key1].length; i++){
@@ -43,8 +38,20 @@ function initialize(configData){
     }
 }
 
-// フォーム送信時
+// デフォルト設定の反映
+function setDefaultConfig(){
+    fetch("../js/default-config.json")
+        .then( response => response.json())
+        .then( data => setConfig(data));
+}
+
+// Generateボタン押下時
 $('button#generate').on('click', function() {
     localStorage.setItem('config', $('form#options').serializeJSON());
     window.open('/sdvx-input-viewer/Viewer/');
+});
+
+// Resetボタン押下時
+$('button#reset').on('click', function() {
+    setDefaultConfig();
 });
