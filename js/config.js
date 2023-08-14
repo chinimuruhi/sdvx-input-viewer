@@ -14,7 +14,7 @@
 // フォーム書き換え（テキスト）
 function setFormValue(id, value){
     if(typeof(value) === "boolean"){
-        $("#" + id).prop("checked", true);
+        $("#" + id).prop("checked", value);
     }else{
         $("#" + id).val(value);
     }
