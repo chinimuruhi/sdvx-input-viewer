@@ -26,7 +26,7 @@
                 "rightColor":"#00ffff",
                 "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
                 "centerColorChange": true,
-                "centerColor":"#00ffff"
+                "centerColor":"#696969"
             }
         },
         {
@@ -50,7 +50,7 @@
                 "rightColor":"#c71585",
                 "centerImagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/analog_center.png",
                 "centerColorChange": true,
-                "centerColor":"#c71585"
+                "centerColor":"#696969"
             }
         }
     ],

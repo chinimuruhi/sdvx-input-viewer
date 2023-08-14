@@ -49,8 +49,6 @@
         return;
     }
 
-
-
     // 背景色の変更
     if(configData["backGroundTransparent"]){
         $("body").css({
@@ -107,10 +105,10 @@
             //ボタン表示
             for(let i = 0; i < buttonSelectors.length; i++){
                 if(gamepads[configData["playerNum"]].buttons[i].pressed){
-                    let cssData = {"background": "url(" + configData["buttonData"][i]["onData"]["imagePath"] + ")"};
+                    let cssData = {"background": "url(" + configData["buttonData"][i]["onData"]["imagePath"] + ")", "filter": "none"};
                     if(configData["buttonData"][i]["onData"]["colorChange"]){
                         cssData["filter"] = configData["buttonData"][i]["onData"]["color"];
-                    } 
+                    }else{}
                     $(buttonSelectors[i]).css(cssData);
                 }else{
                     let cssData = {"background": "url(" + configData["buttonData"][i]["offData"]["imagePath"] + ")"};
@@ -124,11 +122,11 @@
             //アナログデバイス表示
             axisManager.setCurrentAngle(gamepads[configData["playerNum"]].axes, Date.now());
             for(let i = 0; i < analogSelectors.length; i++){
-                let centerCssData;
-                let leftCssData;
-                let rightCssData;
+                let centerCssData = {"filter": "none"};
+                let leftCssData = {"filter": "none"};
+                let rightCssData = {"filter": "none"};
                 if(axisManager.isMoveFixed(i)){
-                    centerCssData = {"background": "url(" + configData["analogData"][i]["onData"]["centerImagePath"] + ")"};
+                    centerCssData["background"] = "url(" + configData["analogData"][i]["onData"]["centerImagePath"] + ")";
                     if(configData["analogData"][i]["onData"]["centerColorChange"]){
                         centerCssData["filter"] = configData["analogData"][i]["onData"]["centerColor"];
                     }
