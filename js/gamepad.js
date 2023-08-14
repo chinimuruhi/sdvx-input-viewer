@@ -111,7 +111,7 @@
                     }else{}
                     $(buttonSelectors[i]).css(cssData);
                 }else{
-                    let cssData = {"background": "url(" + configData["buttonData"][i]["offData"]["imagePath"] + ")"};
+                    let cssData = {"background": "url(" + configData["buttonData"][i]["offData"]["imagePath"] + ")", "filter": "none"};
                     if(configData["buttonData"][i]["offData"]["colorChange"]){
                         cssData["filter"] = configData["buttonData"][i]["offData"]["color"];
                     } 
