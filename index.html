@@ -38,16 +38,27 @@
         <div class="container">
             <h1>SDVX Input Viewer</h1>
             <h2>概要</h2> 
-            <p>コナステ SOUND VOLTEX 専用コントローラ向けの入力表示ツールです。※未完成です。</p>
+            <p>コナステ SOUND VOLTEX 専用コントローラ向けの入力表示ツールです。</p>
             <h2>用途</h2>
             <p>以下のような用途を想定しています。</p>
             <ul>
                 <li>入力の確認</li>
-                <li>OBSで取り込んで動画投稿・配信</li>
+                <li>OBS Studioで取り込んで動画投稿・配信</li>
             </ul>
             <h2>使用方法</h2>
             <p><a href="/sdvx-input-viewer/Generate/">Generate</a>画面にて表示設定を行い、「Generate」を押下してください。</p>
             <p>設定データが消えた時に備え、<a href="/sdvx-input-viewer/Export/">Export</a>画面から設定をバックアップしておくことを推奨します。<br><a href="/sdvx-input-viewer/Import/">Import</a>画面からリストアが可能です。</p>  
+            <h5>OBS Studioに取り込む場合</h5>
+            <p class="text-danger">「ソース ＞ ブラウザ」で取り込むと正常に動作しません。（OBS Studio Ver.29.1.3で確認）</p>
+            <p>以下の手順で取り込むことを推奨します。OBSの詳細な使用方法は割愛します。</p>
+            <ol>
+                <li>利用推奨環境のブラウザでページを開く。</li>
+                <li>「ソース ＞ ウィンドウキャプチャ」等でブラウザ画面を取り込む</li>
+                <li>追加したソースを右クリックして「フィルタ」を押下。</li>
+                <li>「クロップ/パッド」を追加して余計な部分を切り取り</li>
+                <li>「クロマキー」を追加して背景を削除</li>
+            </ol>
+            <p class="text-muted"><a href="https://gamepadviewer.com/">GamePad Viewer</a>と同様に使えることが理想だったのですが、現在のOBSのブラウザではSDVXコントローラのつまみ入力が正常に取得できません...<br>OBSの今後のアップデート次第では同様に使えるようになるかも</p>
             <h2>利用推奨環境</h2>
             <p>JavaScriptが利用可能である、以下の環境からの利用を推奨します。</p>
             <ul>

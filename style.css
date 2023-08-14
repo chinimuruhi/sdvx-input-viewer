@@ -26,7 +26,7 @@
 
 .main .container h5 {
     padding: 0.3em;
-    border-bottom: solid 1px black;
+    border-bottom: dashed 1px black;
 }
 
 .footer {

@@ -1,7 +1,7 @@
 {
     "playerNum": 0,
     "backGroundTransparent": false,
-    "backGroundColor": "#000000",
+    "backGroundColor": "#00ff00",
     "analogReleaseTime": 0.05,
     "analogSensitivity": 1.0,
     "analogData":[
@@ -120,7 +120,7 @@
             "onData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
                 "colorChange": true,
-                "color": "#ff6347"
+                "color": "#ff780a"
             }
         },        {
             "offData":{
@@ -131,7 +131,7 @@
             "onData":{
                 "imagePath":"https://chinimuruhi.github.io/sdvx-input-viewer/img/fx.png",
                 "colorChange": true,
-                "color": "#ff6347"
+                "color": "#ff780a"
             }
         }
     ]
