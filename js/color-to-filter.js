@@ -300,6 +300,7 @@ function hexToRgb(hex) {
     : null;
 }
 
+// 以下変更箇所
 function hexToFilter(hex) {
   // 試行回数
   const trialNum = 10;

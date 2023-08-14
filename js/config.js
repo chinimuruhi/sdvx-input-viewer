@@ -1,5 +1,5 @@
 (function (){
-    const localStorageData = localStorage.getItem('config');
+    const localStorageData = localStorage.getItem("config");
     try {
         if(localStorageData){
             setConfig(JSON.parse(localStorageData));
@@ -13,11 +13,10 @@
 
 // フォーム書き換え（テキスト）
 function setFormValue(id, value){
-    console.log(id + ":" + value);
     if(typeof(value) === "boolean"){
-        $('#' + id).prop('checked', true);
+        $("#" + id).prop("checked", true);
     }else{
-        $('#' + id).val(value);
+        $("#" + id).val(value);
     }
 }
 
@@ -46,12 +45,14 @@ function setDefaultConfig(){
 }
 
 // Generateボタン押下時
-$('button#generate').on('click', function() {
-    localStorage.setItem('config', $('form#options').serializeJSON());
-    window.open('/sdvx-input-viewer/Viewer/');
+$("button#generate").on("click", function() {
+    const config = $("form#options").serializeJSON();
+    localStorage.setItem("config", config);
+    urlQuery = btoa(window.RawDeflate.deflate(encodeURIComponent(config)));
+    window.open("/sdvx-input-viewer/Viewer/?config=" + encodeURIComponent(urlQuery));
 });
 
 // Resetボタン押下時
-$('button#reset').on('click', function() {
+$("button#reset").on("click", function() {
     setDefaultConfig();
 });

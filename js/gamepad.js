@@ -27,11 +27,35 @@
     ]
 
     // configの読み込み
-    const configData = JSON.parse(localStorage.getItem('config'));
-    if(typeof(configData) !== "object"){
-        $("#error-message").text("設定データが壊れています。");
+    const url = new URL(window.location.href);
+    const paramData = url.searchParams.get('config');
+    let configData;
+    console.log(paramData);
+    if(paramData){
+        try{
+            configData = window.atob(paramData);
+            console.log(configData);
+            configData = window.RawDeflate.inflate(configData);
+            console.log(configData);
+            configData = decodeURIComponent(configData);
+            console.log(configData);
+            configData = JSON.parse(configData);
+            console.log(configData);
+            if(typeof(configData) != "object"){
+                $("#error-message").text("設定データが壊れています。");
+                return;
+            }
+        }catch(e){
+            console.log(e);
+            $("#error-message").text("設定データが壊れています。");
+            return;
+        }
+    }else{
+        $("#error-message").text("設定データが存在しません。");
         return;
     }
+
+
 
     // 背景色の変更
     if(configData["backGroundTransparent"]){
