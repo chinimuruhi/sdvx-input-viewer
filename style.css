@@ -47,6 +47,10 @@
     margin: 0px 0;
 }
 
+form    {
+    margin: 0;
+}
+
 /* アコーディオンUI */
 summary {
     display: block;

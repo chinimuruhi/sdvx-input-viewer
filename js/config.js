@@ -1,10 +1,14 @@
 (function (){
-    const localStorageData = localStorage.getItem("config");
+    const configData = localStorage.getItem("config");
+    const keyConfigData = localStorage.getItem("key-config");
     try {
-        if(localStorageData){
-            setConfig(JSON.parse(localStorageData));
+        if(configData){
+            setConfig(JSON.parse(configData));
         }else{
             setDefaultConfig();
+        }
+        if(keyConfigData){
+            setConfig(JSON.parse(keyConfigData));
         }
     } catch(e) {
         setDefaultConfig();
@@ -37,8 +41,22 @@ function setConfig(configData){
     }
 }
 
+// Key Configのフォームへの反映
+function setKeyConfig(keyConfigData){
+    for(const key1 in keyConfigData){
+        if(Array.isArray(keyConfigData[key1])){
+            for(let i = 0; i < keyConfigData[key1].length; i++){
+                setFormValue(key1 + "\\[" + i + "\\]", keyConfigData[key1][i]);
+            }
+        }else{
+            setFormValue(key1, keyConfigData[key1]);
+        }
+    }
+}
+
 // デフォルト設定の反映
 function setDefaultConfig(){
+    $("#key-config").trigger("reset");
     fetch("../js/default-config.json")
         .then( response => response.json())
         .then( data => setConfig(data));
@@ -48,8 +66,31 @@ function setDefaultConfig(){
 $("button#generate").on("click", function() {
     const config = $("form#options").serializeJSON();
     localStorage.setItem("config", config);
-    urlQuery = btoa(window.RawDeflate.deflate(encodeURIComponent(config)));
-    window.open("/sdvx-input-viewer/Viewer/?config=" + encodeURIComponent(urlQuery));
+    let urlQuery = 'config=' + encodeURIComponent(btoa(window.RawDeflate.deflate(encodeURIComponent(config))));
+    let keyConfig = {
+        "buttons":[],
+        "axis":[],
+    };
+    for(let i = 0; i <= 6; i++){
+        let val = $("#buttons\\[" + String(i) + "\\]").val()
+        if(val){
+            keyConfig["buttons"][i] = val;
+        }else{
+            keyConfig["buttons"][i] = String(i); 
+        }
+    }
+    for(let i = 0; i <= 1; i++){
+        let val = $("#axis\\[" + String(i) + "\\]").val()
+        if(val){
+            keyConfig["axis"][i] = val;
+        }else{
+            keyConfig["axis"][i] = String(i); 
+        }
+    }
+    keyConfig = JSON.stringify(keyConfig);
+    localStorage.setItem("key-config", keyConfig);
+    urlQuery += '&key=' + encodeURIComponent(btoa(window.RawDeflate.deflate(encodeURIComponent(keyConfig)))); 
+    window.open("/sdvx-input-viewer/Viewer/?" + urlQuery);
 });
 
 // Resetボタン押下時

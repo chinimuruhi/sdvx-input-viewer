@@ -2,6 +2,7 @@
     "playerNum": 0,
     "backGroundTransparent": false,
     "backGroundColor": "#00ff00",
+    "customCssPath": "",
     "analogReleaseTime": 0.05,
     "analogSensitivity": 1.0,
     "analogData":[

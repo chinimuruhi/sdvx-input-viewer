@@ -10,7 +10,7 @@
         "#buttons .d",
         "#fxs .left",
         "#fxs .right"
-    ]
+    ];
 
     // アナログデバイスのセレクタ
     const analogSelectors = [
@@ -24,15 +24,21 @@
             "right": "#analogs .red .right",
             "center": "#analogs .red .center"
         }
-    ]
+    ];
+
+    // デフォルトのKeyData
+    const defaultKeyData = {
+        "buttons": ["0", "1", "2", "3", "4", "5", "6"],
+        "axis": ["0", "1"]
+    };
 
     // configの読み込み
     const url = new URL(window.location.href);
-    const paramData = url.searchParams.get('config');
+    const paramConfigData = url.searchParams.get('config');
     let configData;
-    if(paramData){
+    if(paramConfigData){
         try{
-            configData = window.atob(paramData);
+            configData = window.atob(paramConfigData);
             configData = window.RawDeflate.inflate(configData);
             configData = decodeURIComponent(configData);
             configData = JSON.parse(configData);
@@ -49,6 +55,27 @@
         return;
     }
 
+    //keyConfigの読み込み
+    const paramKeyData = url.searchParams.get('key');
+    let keyData;
+    if(paramKeyData){
+        try{
+            keyData = window.atob(paramKeyData);
+            keyData = window.RawDeflate.inflate(keyData);
+            keyData = decodeURIComponent(keyData);
+            keyData = JSON.parse(keyData);
+            if(typeof(keyData) != "object"){
+                $("#error-message").text("設定データが壊れています。");
+                return;
+            }
+        }catch(e){
+            $("#error-message").text("設定データが壊れています。");
+            return;
+        }
+    }else{
+        keyData = defaultKeyData;
+    }
+
     // 背景色の変更
     if(configData["backGroundTransparent"]){
         $("body").css({
@@ -57,6 +84,13 @@
     }else{
         $("body").css({
             "background-color": configData["backGroundColor"]
+        });
+    }
+
+    // Custom CSSの読み込み
+    if(configData["customCssPath"]){
+        $.get(configData["customCssPath"], function (data) {
+            $('#add-css').html(data);
         });
     }
 
@@ -104,7 +138,7 @@
         if(gamepads[configData["playerNum"]]){
             //ボタン表示
             for(let i = 0; i < buttonSelectors.length; i++){
-                if(gamepads[configData["playerNum"]].buttons[i].pressed){
+                if(gamepads[configData["playerNum"]].buttons[Number(keyData["buttons"][i])].pressed){
                     let cssData = {"background": "url(" + configData["buttonData"][i]["onData"]["imagePath"] + ")", "filter": "none"};
                     if(configData["buttonData"][i]["onData"]["colorChange"]){
                         cssData["filter"] = configData["buttonData"][i]["onData"]["color"];
@@ -125,12 +159,12 @@
                 let centerCssData = {"filter": "none"};
                 let leftCssData = {"filter": "none"};
                 let rightCssData = {"filter": "none"};
-                if(axisManager.isMoveFixed(i)){
+                if(axisManager.isMoveFixed(Number(keyData["axis"][i]))){
                     centerCssData["background"] = "url(" + configData["analogData"][i]["onData"]["centerImagePath"] + ")";
                     if(configData["analogData"][i]["onData"]["centerColorChange"]){
                         centerCssData["filter"] = configData["analogData"][i]["onData"]["centerColor"];
                     }
-                    if(axisManager.getFixedMoveDirection(i) < 0){
+                    if(axisManager.getFixedMoveDirection(Number(keyData["axis"][i])) < 0){
                         leftCssData = {"background": "url(" + configData["analogData"][i]["onData"]["leftImagePath"] + ")"};
                         if(configData["analogData"][i]["onData"]["leftColorChange"]){
                             leftCssData["filter"] = configData["analogData"][i]["onData"]["leftColor"];
@@ -164,7 +198,7 @@
                         rightCssData["filter"] = configData["analogData"][i]["offData"]["rightColor"];
                     }
                 }
-                centerCssData["transform"] = "rotate(" + String(axisManager.getFixedAngle(i) * 180) + "deg)";
+                centerCssData["transform"] = "rotate(" + String(axisManager.getFixedAngle(Number(keyData["axis"][i])) * 180) + "deg)";
                 $(analogSelectors[i]["center"]).css(centerCssData);
                 $(analogSelectors[i]["left"]).css(leftCssData);
                 $(analogSelectors[i]["right"]).css(rightCssData);
@@ -172,7 +206,7 @@
             axisManager.goNextFrame();
             $("#error-message").text("");
         }else{
-            $("#error-message").text("コントローラを接続して任意のボタンを押してください。");
+            $("#error-message").text("aaaコントローラを接続して任意のボタンを押してください。");
         }
 	},1000/120);
 

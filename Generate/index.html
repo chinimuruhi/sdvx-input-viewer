@@ -38,8 +38,91 @@
     <!-- ページコンテンツ -->
     <div class="main">
         <div class="container">
+            <h1>設定（Options）</h1>
+            <form id="key-config">
+                <details>
+                    <summary>
+                        <span class="summary_inner">
+                            キーコンフィグ（Key Config）<span class="icon"></span>
+                        </span>
+                    </summary>
+                    <div class="details-content">
+                        <p class="text-danger">※ゲーム内のキーコンフィグは変更されません。</p>
+                        <p>操作と表示が異なる場合、<a href="https://hardwaretester.com/gamepad">Gamepad
+                                Tester</a>でコントローラの動作を確認し、適する番号を入力してください。</p>
+                        <hr>
+                        <div class="row mb-3">
+                            <div id="axis[0]Help" class="form-text">
+                                例：左つまみを動かしてAXIS 1が動く場合、左つまみ欄に「1」を入力
+                            </div>
+                            <label for="axis[0]" class="col-sm-10 col-form-label">左つまみ（Left Analog Device）</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="axis[0]" name="axis[0]" placeholder="0" aria-describedby="axis[0]Help">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="axis[1]" class="col-sm-10 col-form-label">右つまみ（Right Analog Device）</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="axis[1]" name="axis[1]" placeholder="1">
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="buttons[0]Help" class="form-text">
+                            例：STARTボタンを押してB1が反応する場合、STARTボタン欄に「1」を入力
+                        </div>
+                        <div class="row mb-3">
+                            <label for="buttons[0]" class="col-sm-10 col-form-label">STARTボタン</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="buttons[0]" name="buttons[0]" aria-describedby="buttons[0]Help"
+                                    placeholder="0">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="buttons[1]" class="col-sm-10 col-form-label">BT-A</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="buttons[1]" name="buttons[1]"
+                                    placeholder="1">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="buttons[2]" class="col-sm-10 col-form-label">BT-B</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="buttons[2]" name="buttons[2]"
+                                    placeholder="2">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="buttons[3]" class="col-sm-10 col-form-label">BT-C</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="buttons[3]" name="buttons[3]"
+                                    placeholder="3">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="buttons[4]" class="col-sm-10 col-form-label">BT-D</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="buttons[4]" name="buttons[4]"
+                                    placeholder="4">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="buttons[5]" class="col-sm-10 col-form-label">FX-L</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="buttons[5]" name="buttons[5]"
+                                    placeholder="5">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="buttons[6]" class="col-sm-10 col-form-label">FX-R</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="buttons[6]" name="buttons[6]"
+                                    placeholder="6">
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </form>
             <form id="options">
-                <h1>設定（Options）</h1>
                 <details>
                     <summary>
                         <span class="summary_inner">
@@ -70,6 +153,13 @@
                                 name="backGroundColor" aria-describedby="backGroundColorHelp">
                             <div id="backGroundColorHelp" class="form-text">背景色を指定できます。※BackGround
                                 Transparentが有効の場合は適用されません。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customCssPath" class="form-label">Custom CSS Path</label>
+                            <input type="text" class="form-control" id="customCssPath" name="customCssPath"
+                                aria-describedby="customCssPathHelp" placeholder="https://example.com/stylesheet.css">
+                            <div id="customCssPathHelp" class="form-text">
+                                独自CSSを使用する上級者向けの設定です。ボタンの位置や大きさ等を変更したい場合、適当な場所にCSSファイルをアップロードし、そのURLをご指定ください。</div>
                         </div>
                     </div>
                 </details>
@@ -484,8 +574,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[0][offData][colorChange]" class="form-check-label">Image
                                     Color Change(OFF)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[0][offData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[0][offData][colorChange]"
                                     name="buttonData[0][offData][colorChange]"
                                     aria-describedby="buttonData[0][offData][colorChange]Help">
                             </div>
@@ -513,8 +602,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[0][onData][colorChange]" class="form-check-label">Image
                                     Color Change(ON)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[0][onData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[0][onData][colorChange]"
                                     name="buttonData[0][onData][colorChange]"
                                     aria-describedby="buttonData[0][onData][colorChange]Help">
                             </div>
@@ -550,8 +638,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[1][offData][colorChange]" class="form-check-label">Image
                                     Color Change(OFF)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[1][offData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[1][offData][colorChange]"
                                     name="buttonData[1][offData][colorChange]"
                                     aria-describedby="buttonData[1][offData][colorChange]Help">
                             </div>
@@ -579,8 +666,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[1][onData][colorChange]" class="form-check-label">Image
                                     Color Change(ON)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[1][onData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[1][onData][colorChange]"
                                     name="buttonData[1][onData][colorChange]"
                                     aria-describedby="buttonData[1][onData][colorChange]Help">
                             </div>
@@ -616,8 +702,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[2][offData][colorChange]" class="form-check-label">Image
                                     Color Change(OFF)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[2][offData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[2][offData][colorChange]"
                                     name="buttonData[2][offData][colorChange]"
                                     aria-describedby="buttonData[2][offData][colorChange]Help">
                             </div>
@@ -645,8 +730,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[2][onData][colorChange]" class="form-check-label">Image
                                     Color Change(ON)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[2][onData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[2][onData][colorChange]"
                                     name="buttonData[2][onData][colorChange]"
                                     aria-describedby="buttonData[2][onData][colorChange]Help">
                             </div>
@@ -682,8 +766,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[3][offData][colorChange]" class="form-check-label">Image
                                     Color Change(OFF)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[3][offData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[3][offData][colorChange]"
                                     name="buttonData[3][offData][colorChange]"
                                     aria-describedby="buttonData[3][offData][colorChange]Help">
                             </div>
@@ -711,8 +794,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[3][onData][colorChange]" class="form-check-label">Image
                                     Color Change(ON)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[3][onData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[3][onData][colorChange]"
                                     name="buttonData[3][onData][colorChange]"
                                     aria-describedby="buttonData[3][onData][colorChange]Help">
                             </div>
@@ -748,8 +830,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[4][offData][colorChange]" class="form-check-label">Image
                                     Color Change(OFF)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[4][offData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[4][offData][colorChange]"
                                     name="buttonData[4][offData][colorChange]"
                                     aria-describedby="buttonData[4][offData][colorChange]Help">
                             </div>
@@ -777,8 +858,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[4][onData][colorChange]" class="form-check-label">Image
                                     Color Change(ON)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[4][onData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[4][onData][colorChange]"
                                     name="buttonData[4][onData][colorChange]"
                                     aria-describedby="buttonData[4][onData][colorChange]Help">
                             </div>
@@ -814,8 +894,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[5][offData][colorChange]" class="form-check-label">Image
                                     Color Change(OFF)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[5][offData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[5][offData][colorChange]"
                                     name="buttonData[5][offData][colorChange]"
                                     aria-describedby="buttonData[5][offData][colorChange]Help">
                             </div>
@@ -843,8 +922,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[5][onData][colorChange]" class="form-check-label">Image
                                     Color Change(ON)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[5][onData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[5][onData][colorChange]"
                                     name="buttonData[5][onData][colorChange]"
                                     aria-describedby="buttonData[5][onData][colorChange]Help">
                             </div>
@@ -880,8 +958,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[6][offData][colorChange]" class="form-check-label">Image
                                     Color Change(OFF)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[6][offData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[6][offData][colorChange]"
                                     name="buttonData[6][offData][colorChange]"
                                     aria-describedby="buttonData[6][offData][colorChange]Help">
                             </div>
@@ -909,8 +986,7 @@
                             <div class="form-check form-switch">
                                 <label for="buttonData[6][onData][colorChange]" class="form-check-label">Image
                                     Color Change(ON)</label>
-                                <input type="checkbox" class="form-check-input"
-                                    id="buttonData[6][onData][colorChange]"
+                                <input type="checkbox" class="form-check-input" id="buttonData[6][onData][colorChange]"
                                     name="buttonData[6][onData][colorChange]"
                                     aria-describedby="buttonData[6][onData][colorChange]Help">
                             </div>
@@ -925,11 +1001,11 @@
                         </div>
                     </div>
                 </details>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button id="generate" type="button" class="btn btn-primary btn-lg">Generate</button>
-                    <button id="reset" type="button" class="btn btn-primary btn-lg btn-danger">Reset</button>
-                </div>
             </form>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button id="generate" type="button" class="btn btn-primary btn-lg">Generate</button>
+                <button id="reset" type="button" class="btn btn-primary btn-lg btn-danger">Reset</button>
+            </div>
         </div>
     </div>
 

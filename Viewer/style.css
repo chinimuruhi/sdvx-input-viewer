@@ -2,16 +2,18 @@ body    {
     overflow: hidden;
 }
 
+/* コントローラ全体 */
 #controller {
     position: absolute;
     width: 720px;
     height: 405px;
 }
 
+/* スタートボタン */
 #starts    {
     position: absolute;
     width: 720px;
-    top: 80px;
+    top: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,14 +23,14 @@ body    {
     position: absolute;
     width: 100px;
     height: 100px;
-    background: url(../img/start.png);
     filter: none;
 }
 
+/* つまみ */
 #analogs    {
     position: absolute;
     width: 720px;
-    top: 70px;
+    top: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,45 +50,38 @@ body    {
 }
 
 #analogs .blue{
-    margin-left: -500px;
+    margin-left: -600px;
 }
 
 #analogs .blue .left{
-    background: url(../img/analog_left.png);
     filter: none;
 }
 
 #analogs .blue .right{
-    background: url(../img/analog_right.png);
     filter: none;
 }
 
 #analogs .blue .center{
-    background: url(../img/analog_center.png);
     filter: none;
-    transform:rotate(0deg);  
 }
 
 #analogs .red{
-    margin-left: 500px;
+    margin-left: 600px;
 }
 
 #analogs .red .left{
-    background: url(../img/analog_left.png);
     filter: none;
 }
 
 #analogs .red .right{
-    background: url(../img/analog_right.png);
     filter: none;
 }
 
 #analogs .red .center{
-    background: url(../img/analog_center.png);
     filter: none;
-    transform:rotate(0deg);  
 }
 
+/* BT */
 #buttons    {
     position: absolute;
     width: 720px;
@@ -104,28 +99,25 @@ body    {
 
 #buttons .a{
     margin-left: -375px;
-    background: url(../img/button.png);
     filter: none;
 }
 
 #buttons .b{
     margin-left: -125px;
-    background: url(../img/button.png);
     filter: none;
 }
 
 #buttons .c{
     margin-left: 125px;
-    background: url(../img/button.png);
     filter: none;
 }
 
 #buttons .d{
     margin-left: 375px;
-    background: url(../img/button.png);
     filter: none;
 }
 
+/* FX */
 #fxs    {
     position: absolute;
     width: 720px;
@@ -142,14 +134,12 @@ body    {
 }
 
 #fxs .left{
-    margin-left: -200px;
-    background: url(../img/fx.png);
+    margin-left: -250px;
     filter: none;
 }
 
 #fxs .right{
-    margin-left: 200px;
-    background: url(../img/fx.png);
+    margin-left: 250px;
     filter: none;
 }
 
