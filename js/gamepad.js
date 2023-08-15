@@ -206,7 +206,7 @@
             axisManager.goNextFrame();
             $("#error-message").text("");
         }else{
-            $("#error-message").text("aaaコントローラを接続して任意のボタンを押してください。");
+            $("#error-message").text("コントローラを接続して任意のボタンを押してください。");
         }
 	},1000/120);
 
