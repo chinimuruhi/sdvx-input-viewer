@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>SDVX Input Viewer - Top</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <div class="header">
+        <nav class="navbar navbar-dark bg-dark navbar-fixed-top navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand">SDVX Input Viewer</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Top</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sdvx-input-viewer/Generate/">Generate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sdvx-input-viewer/Import/">Import</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sdvx-input-viewer/Export/">Export</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>    
+        </nav>
+    </div>
+
+    <!-- ページコンテンツ -->
+    <div class="main">
+        <div class="container">
+            <h1>SDVX Input Viewer</h1>
+            <h2>概要</h2> 
+            <p>コナステ SOUND VOLTEX 専用コントローラ向けの入力表示ツールです。</p>
+            <p>動作のイメージは以下の動画をご覧ください。</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/_bzGa-sg0y0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <h2>用途</h2>
+            <p>以下のような用途を想定しています。</p>
+            <ul>
+                <li>入力の確認</li>
+                <li>OBS Studioで取り込んで動画投稿・配信</li>
+            </ul>
+            <h2>使用方法</h2>
+            <p><a href="/sdvx-input-viewer/Generate/">Generate</a>画面で「Generate」を押下してください。必要に応じて設定を変更することができます。</p>
+            <p>設定データが消えた時に備え、<a href="/sdvx-input-viewer/Export/">Export</a>画面から設定をバックアップしておくことを推奨します。<br><a href="/sdvx-input-viewer/Import/">Import</a>画面からリストアが可能です。</p>  
+            <h5>OBS Studioに取り込む（ブラウザ）</h5>
+            <p class="text-info">比較的新しいバージョンのOBS Studioを使用する場合は「ソース ＞ ブラウザ」で取り込むことを推奨します。クロマキー処理の必要がなく、綺麗に取り込むことが可能です。</p>
+            <ol>
+                <li>利用推奨環境のブラウザでページを開く。</li>
+                <li>Generateページから各種設定を行う。この際、<b>一般（General）のBackGround TransparentをON</b>にする。</li>
+                <li>「Generate」ボタンを押下する。また、表示された画面のURLをコピーする。</li>
+                <li>「ソース ＞ ブラウザ」よりブラウザソース作成したら、URL欄にコピーしたURLを貼り付け、OKを押下</li>
+            </ol>
+            <h5>OBS Studioに取り込む（ウィンドウキャプチャ、古いバージョンのOBSの場合）</h5>
+            <p class="text-danger">古いバージョンのOBS Studioを使用すると「ソース ＞ ブラウザ」で取り込むと正常に動作しません。（OBS Studio Ver.29.1.3で確認）</p>
+            <ol>
+                <li>利用推奨環境のブラウザでページを開く。</li>
+                <li>「ソース ＞ ウィンドウキャプチャ」等でブラウザ画面を取り込む</li>
+                <li>追加したソースを右クリックして「フィルタ」を押下。</li>
+                <li>「クロップ/パッド」を追加して余計な部分を切り取り</li>
+                <li>「クロマキー」を追加して背景を削除</li>
+            </ol>
+            <h2>利用推奨環境</h2>
+            <p>JavaScriptが利用可能である、以下の環境からの利用を推奨します。</p>
+            <ul>
+                <li>Microsoft Edge （最新版）</li>
+                <li>Mozilla Firefox （最新版）</li>
+                <li>Google Chrome （最新版）</li>
+            </ul>
+            <p>（環境は一例となります）</p>
+            <p>また、一部機能でLocalStorageを使用しています。<br>ブラウザのLocalStorageが使用できない状態の場合、正常にご利用いただくことができない可能性がございます。</p>
+            <h2>お問い合わせ</h2>
+            <p>
+                バグ報告等は<a href="https://x.com/ci_public">@ci_public</a>や<a href="https://github.com/chinimuruhi/sdvx-input-viewer/issues">Issues</a>等に投げて頂ければ気が向いたら対応します。
+            </p>
+            <h2>その他</h2>
+            <p>本サイトは非公式であり、株式会社コナミアミューズメント様とは一切関係ありません。<br>本サイトをご利用中に何かしらのトラブルが発生したとしても、運営者は一切の責任を負いません。</p>
+            <p>営利・非営利に関わらず、自由にご利用いただいて問題ありません。</p>
+            <p>ソースコードは下記ページにて公開されています。</p>
+            <a href="https://github.com/chinimuruhi/sdvx-input-viewer/">https://github.com/chinimuruhi/sdvx-input-viewer/</a>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container text-center">
+          <p class="text-muted">©︎2023 chinimuruhi</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

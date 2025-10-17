@@ -1,55 +1,129 @@
-.header {
-    position: fixed;
-    width: 100%;
-    top: 0px;
+/* ========== Base ========== */
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top left, #101820, #070b0f);
+  color: #e0e6ed;
+  line-height: 1.7;
 }
 
-.main .container {
-    padding: 100px 15px 100px 0px;
+/* ========== Navbar ========== */
+.navbar {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.main .container h1 {
-    padding: 0.5em;
-    color: #010101;
-    background: #DDDDDD;
-    border-bottom: solid 3px #999999;
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #00bcd4 !important;
 }
 
-.main .container h2 {
-    padding: 0.3em;
-    border-bottom: solid 2px black;
+.nav-link {
+  color: #cfd8dc !important;
+  margin-right: 1rem;
+  transition: color 0.3s;
 }
 
-.main .container h3 {
-    padding: 0.25em 0.2em;
+.nav-link:hover,
+.nav-link.active {
+  color: #00e5ff !important;
 }
 
-.main .container h5 {
-    padding: 0.3em;
-    border-bottom: dashed 1px black;
+/* ========== Hero Section ========== */
+.hero {
+  text-align: center;
+  padding: 140px 20px 80px 20px;
+  background: linear-gradient(160deg, #0a0f18, #121e2f);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #DDDDDD;
+.hero h1 {
+  font-weight: 800;
+  font-size: 3rem;
+  background: linear-gradient(90deg, #00bcd4, #4cafef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.footer .container {
-    width: auto;
-    max-width: 680px;
-    padding: 0 15 0 100px;
+.hero p {
+  margin-top: 15px;
+  color: #b0bec5;
+  font-size: 1.1rem;
 }
 
-.footer .container .text-muted {
-    margin: 0px 0;
+/* ========== Button ========== */
+.btn-generate {
+  margin-top: 40px;
+  padding: 16px 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #00bcd4, #4cafef);
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.4);
+  transition: all 0.3s ease;
 }
 
-form    {
-    margin: 0;
+.btn-generate:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(0, 229, 255, 0.7);
+  color: #fff;
 }
+
+/* ========== Content Sections ========== */
+.main {
+  padding: 60px 0;
+}
+
+h2 {
+  font-weight: 600;
+  margin-top: 2.5rem;
+  border-left: 4px solid #00bcd4;
+  padding-left: 12px;
+}
+
+.content-section {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(0, 188, 212, 0.15);
+}
+
+iframe {
+  border-radius: 10px;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 640px;
+}
+
+/* ========== Links & Footer ========== */
+a {
+  color: #4fc3f7;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #81d4fa;
+}
+
+footer {
+  background: rgba(0, 0, 0, 0.5);
+  color: #90a4ae;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 
 /* アコーディオンUI */
 summary {
@@ -70,7 +144,7 @@ summary::-webkit-details-marker {
     padding: 16px 24px;
     border: 1px solid #999999;
     font-weight: bold;
-    color: #000000;
+    color: #fff;
 }
 
 .icon {
@@ -132,11 +206,12 @@ details[open] .summary_inner::after {
 }
 
 .details-content {
-    background-color: #f2f2f2;
-    padding: 24px 48px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    margin:1rem;
+    padding: 2rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.05);
 }
 
 #error-message  {

@@ -9,36 +9,40 @@
 
 <body>
     <!-- ヘッダー -->
-    <nav class="navbar navbar-dark bg-dark navbar-fixed-top navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand">SDVX Input Viewer</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sdvx-input-viewer/">Top</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Generate</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sdvx-input-viewer/Import/">Import</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sdvx-input-viewer/Export/">Export</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/sdvx-input-viewer/">SDVX Input Viewer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/sdvx-input-viewer/">Top</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Generate</a></li>
+          <li class="nav-item"><a class="nav-link" href="/sdvx-input-viewer/Import/">Import</a></li>
+          <li class="nav-item"><a class="nav-link" href="/sdvx-input-viewer/Export/">Export</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<section class="hero">
+    <div class="container text-center">
+      <h1>Generate</h1>
+      <p>コントローラー入力表示画面を生成します。</p>
+    </div>
+  </section>
 
     <!-- ページコンテンツ -->
-    <div class="main">
-        <div class="container">
-            <h1>設定（Options）</h1>
+    
+  <main class="main">
+    <div class="container">
+        <h2>Generate</h2>
+        <ul>
+        <li>各種設定を行った後、「Generate」を押してください。</li>
+        <li>設定を変更した場合は、入力表示画面をリロードするのではなく、再度「Generate」を押してください。（URLクエリパラメータに設定情報が含まれています）</li>
+        <li>一般的なコントローラであれば特に設定を変更せずともそのまま「Generate」を押下すれば使用できる想定です。</li>
+      <div class="content-section">
             <form id="key-config">
                 <details>
                     <summary>
@@ -142,7 +146,7 @@
                                 <label for="backGroundTransparent" class="form-check-label">BackGround
                                     Transparent</label>
                                 <input type="checkbox" class="form-check-input" id="backGroundTransparent"
-                                    name="backGroundTransparent" aria-describedby="backGroundTransparentHelp">
+                                    name="backGroundTransparent" aria-describedby="backGroundTransparentHelp" checked>
                             </div>
                             <div id="backGroundTransparentHelp" class="form-text">背景を透明にしたい場合はチェックをつけてください。
                             </div>
@@ -1003,8 +1007,8 @@
                 </details>
             </form>
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button id="generate" type="button" class="btn btn-primary btn-lg">Generate</button>
-                <button id="reset" type="button" class="btn btn-primary btn-lg btn-danger">Reset</button>
+                <button id="generate" type="button" class="btn btn-generate btn-lg">Generate</button>
+                <button id="reset" type="button" class="btn btn-outline-danger">Reset</button>
             </div>
         </div>
     </div>
@@ -1026,6 +1030,7 @@
     <script src="../js/jquery.serialize-object.js"></script>
     <script src="../js/rawdeflate.js"></script>
     <script src="../js/config.js"></script>
+</main>
 </body>
 
 </html>
