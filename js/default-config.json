@@ -1,6 +1,6 @@
 {
     "playerNum": 0,
-    "backGroundTransparent": false,
+    "backGroundTransparent": true,
     "backGroundColor": "#00ff00",
     "customCssPath": "",
     "analogReleaseTime": 0.05,
